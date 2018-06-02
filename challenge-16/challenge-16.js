@@ -37,8 +37,8 @@ console.log para cada formato.
 console.log( '\nNome convertido à partir de um slug:' );
 
 let fullName = 'rafael-nogueira-silva';
-let fullNameNew = fullName.split('-').map(name => name[0].toUpperCase() + name.slice(1) )
-console.log(fullNameNew.join(' '))
+let fullNameNew = fullName.split('-').map(name => name[0].toUpperCase() + name.slice(1) ).join(' ')
+console.log(fullNameNew)
 
 /*
 - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -51,8 +51,13 @@ O resultado final deve ficar mais ou menos assim:
 */
 console.log( '\nMeus amigos:' );
 let nomes = ['Marcos', 'Xandy', 'Junior', 'Carlos', 'Paulo'];
+let amigos = nomes.reduce((acumulado, atual, index) => {
+    let separador = nomes.length - 1 === index ? ' e ' : ', ';
+    return acumulado + separador + atual;
+}).concat(' são meus amigos.')
+/* 
 let last = nomes.pop();
-let amigos = nomes.join(', ') + ' e ' + last + ' são meus amigos';
+let amigos = nomes.join(', ') + ' e ' + last + ' são meus amigos'; */
 console.log(amigos)
 
 /*
@@ -67,7 +72,7 @@ Mostre no console a parte "nando" da string "Fernando". Use o método que
 faz a busca do final para o início da string.
 */
 console.log( '\nParte de uma string:' );
-console.log('fernando'.substr(-5, 5))
+console.log('fernando'.substring(8, 3))
 
 /*
 Declare uma variável chamada `myName`, que receba o seu primeiro nome,
@@ -79,7 +84,7 @@ de qualquer tamanho, escrito de qualquer forma.
 Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
 console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
-let myName = 'rafael';
+let myName = 'Rafael';
 let nameInter = [];
 for(let i = 0; i < myName.length; i++) {
     nameInter.push(i % 2 == 0 ? myName[i].toUpperCase() : myName[i].toLowerCase())
